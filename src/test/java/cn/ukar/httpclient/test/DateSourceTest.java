@@ -1,5 +1,6 @@
 package cn.ukar.httpclient.test;
 
+import cn.ukar.entity.User;
 import cn.ukar.service.DateSourceTestService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,10 @@ public class DateSourceTest {
     @Test
     public void test(){
         for(int i = 0 ; i < 20 ; i++){
-            dateSourceTestService.selectTest();
+            User user = dateSourceTestService.selectByPassword("456");
+            if(user != null){
+                System.out.println(user.getName());
+            }
         }
 
 //        dateSourceTestService.insertTest();

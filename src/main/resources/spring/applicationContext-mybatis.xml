@@ -5,11 +5,28 @@
     <!-- 引入其他xml -->
     <import resource="classpath:spring/applicationContext-tx.xml"/>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <!--<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>-->
 
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 配置数据源 -->
+        <property name="dataSource" ref="dataSource" />
+        <!-- 指定全局配置文件 -->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
+        <!-- 配置别名包 -->
+        <property name="typeAliasesPackage" value="cn.ukar.entity" />
+        <!-- 指定mapper.xml文件 -->
+        <property name="mapperLocations" value="classpath:mybatis/mappers/**/*.xml"/>
     </bean>
 
+    <!-- Mapper接口扫描器,单数据源时使用，默认读取所有sqlSessionFactory，通过接口注入，多数据源时会重复读取 -->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="cn.ukar.mapper" />-->
+    <!--</bean>-->
+
+    <!-- mybatis增强Mapper 通用CRUD ,多数据源时使用sqlSessionFactoryBeanName扫描注入方式-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="cn.ukar.mapper"/>
+        <property name="markerInterface" value="com.github.abel533.mapper.Mapper"/>
+    </bean>
 
 </beans>
