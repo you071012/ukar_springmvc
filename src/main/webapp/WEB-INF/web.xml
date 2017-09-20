@@ -69,4 +69,5 @@
     <servlet-name>ukar-web</servlet-name>
     <url-pattern>/ukar/*</url-pattern>
   </servlet-mapping>
+
 </web-app>

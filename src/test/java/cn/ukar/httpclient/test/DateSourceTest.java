@@ -20,10 +20,10 @@ public class DateSourceTest {
     @Test
     public void test(){
         for(int i = 0 ; i < 20 ; i++){
-            User user = dateSourceTestService.selectByPassword("456");
-            if(user != null){
-                System.out.println(user.getName());
-            }
+//            User user = dateSourceTestService.selectByPassword("456");
+//            if(user != null){
+//                System.out.println(user.getName());
+//            }
         }
 
 //        dateSourceTestService.insertTest();

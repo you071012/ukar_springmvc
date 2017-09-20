@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/demo")
 public class DemoController {
 
-    @RequestMapping("/test")
+    @RequestMapping("test.do")
     @ResponseBody
     public String test(){
         return "SUCCESS";
